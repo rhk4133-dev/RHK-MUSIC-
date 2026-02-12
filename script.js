@@ -1,16 +1,25 @@
-const songs=[
-{name:"KAGADADA DONIYALLI",file:"song1.mp3",img:"img1.jpg"},
-{name:"KANAVE KANAVE",file:"song2.mp3",img:"img2.jpg"},
-{name:"TAMIL SONG",file:"song3.mp3",img:"img3.jpg"},
-{name:"DIL LAGANA MANATHA",file:"song4.mp3",img:"img4.jpg"},
-{name:"ZARA ZARA",file:"song5.mp3",img:"img5.jpg"}{ name: "ORUM BLOOD", file: "song6.mp3", img: "img6.jpg" }
-];
+/* ============================= */
+/* 50 SONGS AUTO GENERATOR */
+/* ============================= */
 
-const audio=document.getElementById("audio");
-const songGrid=document.getElementById("songGrid");
-const playerView=document.getElementById("playerView");
-const cd=document.getElementById("cd");
-const nowTitle=document.getElementById("nowTitle");
+const songs = [];
+
+/* Auto create 50 songs (song1.mp3 to song50.mp3) */
+/* Auto images (img1.jpg to img50.jpg) */
+
+for (let i = 1; i <= 50; i++) {
+    songs.push({
+        name: "SONG " + i,
+        file: "song" + i + ".mp3",
+        img: "img" + i + ".jpg"
+    });
+}
+
+const audio = document.getElementById("audio");
+const songGrid = document.getElementById("songGrid");
+const playerView = document.getElementById("playerView");
+const cd = document.getElementById("cd");
+const nowTitle = document.getElementById("nowTitle");
 
 function enterApp(){
 document.getElementById("homePage").style.display="none";
@@ -37,11 +46,11 @@ audio.play();
 nowTitle.innerText=song.name;
 
 /* Background */
-playerView.style.backgroundImage=`url(${song.img})`;
+playerView.style.backgroundImage=`url('${song.img}')`;
 playerView.style.display="flex";
 
 /* CD */
-cd.style.backgroundImage=`url(${song.img})`;
+cd.style.backgroundImage=`url('${song.img}')`;
 cd.classList.add("playing");
 }
 

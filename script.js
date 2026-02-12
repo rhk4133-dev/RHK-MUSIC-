@@ -20,6 +20,7 @@ const audio = document.getElementById("audio");
 const songGrid = document.getElementById("songGrid");
 const playerView = document.getElementById("playerView");
 const cd = document.getElementById("cd");
+const energyRing = document.getElementById("energyRing");
 const soundWave = document.getElementById("soundWave");
 const nowTitle = document.getElementById("nowTitle");
 

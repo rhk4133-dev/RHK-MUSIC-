@@ -1,69 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>RHK MUSIC</title>
+    <title>RHK Music</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- HOME PAGE -->
-<div class="home" id="home">
-    <h1 class="logo">RHK MUSIC 🎵</h1>
-    <button id="enterBtn" class="enter-btn">PLAYLIST</button>
+<!-- 🔥 HOMEPAGE -->
+<div id="homePage" class="home">
+    <h1>🎵 RHK MUSIC 🎵</h1>
+    <button onclick="enterApp()">CLICK HERE TO LISTEN SONG</button>
 </div>
 
-<!-- MUSIC APP -->
-<div class="app" id="app">
+<!-- 🔥 MUSIC APP -->
+<div id="musicApp" class="app" style="display:none;">
 
-    <div class="player">
+    <input type="text" id="searchBar" placeholder="Search song..." onkeyup="searchSong()">
 
-        <div class="cassette" id="cassette">
-            <div class="reel left-reel"></div>
-            <div class="reel right-reel"></div>
+    <div class="columns">
+
+        <!-- Kannada -->
+        <div class="column">
+            <h2>Kannada</h2>
+            <ul id="kannadaList"></ul>
         </div>
 
-        <h2 id="title">Select a Song</h2>
-
-        <div class="controls">
-            <button id="prevBtn">⏮</button>
-            <button id="backBtn">⏪ 10s</button>
-            <button id="playBtn">▶</button>
-            <button id="forwardBtn">10s ⏩</button>
-            <button id="nextBtn">⏭</button>
+        <!-- Hindi -->
+        <div class="column">
+            <h2>Hindi</h2>
+            <ul id="hindiList"></ul>
         </div>
 
-        <div class="progress-container" id="progressContainer">
-            <div class="progress" id="progress"></div>
-        </div>
-
-        <div class="time">
-            <span id="current">0:00</span>
-            <span id="duration">0:00</span>
-        </div>
-
-        <div class="social">
-            <button id="likeBtn">❤️ Like (<span id="likeCount">0</span>)</button>
-            <button id="subscribeBtn">🔔 Subscribe</button>
-        </div>
-
-        <div class="comments">
-            <input type="text" id="commentInput" placeholder="Write comment...">
-            <button id="commentBtn">Post</button>
-            <ul id="commentList"></ul>
+        <!-- English -->
+        <div class="column">
+            <h2>English</h2>
+            <ul id="englishList"></ul>
         </div>
 
     </div>
 
-    <div class="playlist-section">
-        <input type="text" id="search" placeholder="Search song...">
-        <h3>Playlist</h3>
-        <ul id="playlist"></ul>
-    </div>
+    <audio id="audio" controls></audio>
 
 </div>
-
-<audio id="audio"></audio>
 
 <script src="script.js"></script>
 </body>

@@ -2,7 +2,7 @@ const songs = [
     { name: "DIL LAGANA MANATHA", file: "song1.mp3" },
     { name: "KAGADADA DONIYALLI", file: "song2.mp3" },
     { name: "KANAVE KANAVE", file: "song3.mp3" },
-    { name: "NOT 🚫 AVAILABLE", file: "song4.mp3" },
+    { name: "KANTHARA THE PART 2", file: "song4.mp3" },
     { name: "ZARA ZARA", file: "song5.mp3" }
 ];
 

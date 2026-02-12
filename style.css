@@ -2,22 +2,42 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial;
+font-family:'Segoe UI',sans-serif;
 }
 
 body{
 height:100vh;
-background:linear-gradient(-45deg,#141E30,#243B55,#000,#1f1c2c);
+background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#000);
 background-size:400% 400%;
-animation:gradient 10s ease infinite;
+animation:gradientMove 12s ease infinite;
 color:white;
 overflow-x:hidden;
 }
 
-@keyframes gradient{
+/* Animated Background */
+@keyframes gradientMove{
 0%{background-position:0% 50%;}
 50%{background-position:100% 50%;}
 100%{background-position:0% 50%;}
+}
+
+/* Floating Icons */
+.music-bg span{
+position:fixed;
+font-size:30px;
+animation:float 10s linear infinite;
+opacity:0.2;
+}
+
+.music-bg span:nth-child(1){left:10%; animation-delay:0s;}
+.music-bg span:nth-child(2){left:30%; animation-delay:3s;}
+.music-bg span:nth-child(3){left:60%; animation-delay:6s;}
+.music-bg span:nth-child(4){left:80%; animation-delay:2s;}
+.music-bg span:nth-child(5){left:50%; animation-delay:4s;}
+
+@keyframes float{
+0%{top:100%;}
+100%{top:-10%;}
 }
 
 /* HOME */
@@ -30,38 +50,71 @@ align-items:center;
 
 .hero-card{
 background:rgba(255,255,255,0.1);
-padding:40px;
-border-radius:20px;
-backdrop-filter:blur(15px);
+padding:60px;
+border-radius:25px;
+backdrop-filter:blur(20px);
 text-align:center;
+box-shadow:0 20px 50px rgba(0,0,0,0.6);
+animation:fadeIn 2s ease;
 }
 
-.hero-card h1{
-font-size:45px;
+@keyframes fadeIn{
+from{opacity:0; transform:scale(0.8);}
+to{opacity:1; transform:scale(1);}
 }
 
-.hero-card button{
-margin-top:20px;
-padding:12px 25px;
+.logo{
+font-size:55px;
+background:linear-gradient(45deg,#ff512f,#dd2476);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.tagline{
+margin-top:15px;
+opacity:0.8;
+}
+
+.enter-btn{
+margin-top:25px;
+padding:15px 35px;
 border:none;
-border-radius:30px;
-background:linear-gradient(45deg,red,orange);
+border-radius:40px;
+background:linear-gradient(45deg,#ff512f,#dd2476);
 color:white;
+font-size:16px;
 cursor:pointer;
+transition:0.3s;
+}
+
+.enter-btn:hover{
+transform:scale(1.1);
+box-shadow:0 10px 25px rgba(255,0,80,0.6);
 }
 
 /* APP */
 .app{
 padding:20px;
+animation:fadeIn 1s ease;
+}
+
+.app-title{
+text-align:center;
+margin-bottom:20px;
+background:linear-gradient(45deg,#ff512f,#dd2476);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 /* SEARCH */
 #searchBar{
 width:100%;
-padding:12px;
-border-radius:20px;
+padding:14px;
+border-radius:30px;
 border:none;
-margin-bottom:20px;
+margin-bottom:25px;
+outline:none;
+font-size:16px;
 }
 
 /* SONG GRID */
@@ -76,22 +129,33 @@ background:rgba(255,255,255,0.1);
 padding:10px;
 border-radius:15px;
 cursor:pointer;
-transition:0.3s;
+transition:0.4s;
 text-align:center;
+position:relative;
+overflow:hidden;
+}
+
+.song-card::after{
+content:"RHK MUSIC";
+position:absolute;
+bottom:5px;
+right:8px;
+font-size:10px;
+opacity:0.5;
 }
 
 .song-card:hover{
-transform:scale(1.05);
-background:linear-gradient(45deg,red,orange);
+transform:translateY(-10px) scale(1.05);
+box-shadow:0 15px 35px rgba(255,0,80,0.5);
 }
 
 .song-card img{
 width:100%;
-border-radius:10px;
+border-radius:12px;
 margin-bottom:10px;
 }
 
-/* PLAYER VIEW */
+/* PLAYER */
 .player-view{
 position:fixed;
 top:0;
@@ -103,14 +167,15 @@ background-position:center;
 display:none;
 justify-content:center;
 align-items:center;
+animation:fadeIn 0.5s ease;
 }
 
 .overlay{
 position:absolute;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.7);
-backdrop-filter:blur(8px);
+background:rgba(0,0,0,0.8);
+backdrop-filter:blur(10px);
 }
 
 .center-player{
@@ -120,26 +185,13 @@ text-align:center;
 }
 
 .cd{
-width:250px;
-height:250px;
+width:260px;
+height:260px;
 border-radius:50%;
 background-size:cover;
 background-position:center;
 margin:auto;
-position:relative;
 box-shadow:0 30px 60px rgba(0,0,0,0.8);
-}
-
-.cd::after{
-content:"";
-position:absolute;
-width:40px;
-height:40px;
-background:black;
-border-radius:50%;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
 }
 
 .cd.playing{
@@ -151,12 +203,19 @@ from{transform:rotate(0deg);}
 to{transform:rotate(360deg);}
 }
 
+.brand-watermark{
+margin-top:15px;
+opacity:0.6;
+font-size:14px;
+letter-spacing:3px;
+}
+
 .back-btn{
-margin-top:20px;
-padding:10px 20px;
+margin-top:25px;
+padding:12px 25px;
 border:none;
-border-radius:20px;
-background:linear-gradient(45deg,red,orange);
+border-radius:25px;
+background:linear-gradient(45deg,#ff512f,#dd2476);
 color:white;
 cursor:pointer;
 }

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>RHK Premium Music</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -9,23 +8,31 @@
 
 <div class="player">
 
-    <div class="album-container">
+    <!-- NOW PLAYING -->
+    <div class="now-playing">
         <div class="album" id="album"></div>
+        <h2 id="title">Song 1</h2>
+
+        <div class="progress-container" id="progressContainer">
+            <div class="progress" id="progress"></div>
+        </div>
+
+        <div class="time">
+            <span id="current">0:00</span>
+            <span id="duration">0:00</span>
+        </div>
+
+        <button id="playBtn">▶</button>
     </div>
 
-    <h1 class="app-name">RHK Music</h1>
-    <p class="song-name">Song 1</p>
-
-    <div class="progress-container" id="progressContainer">
-        <div class="progress" id="progress"></div>
+    <!-- SCROLL SONG LIST -->
+    <div class="song-list" id="songList">
+        <div class="song active" data-src="song1.mp3">Song 1</div>
+        <div class="song" data-src="song2.mp3">Song 2</div>
+        <div class="song" data-src="song3.mp3">Song 3</div>
+        <div class="song" data-src="song4.mp3">Song 4</div>
+        <div class="song" data-src="song5.mp3">Song 5</div>
     </div>
-
-    <div class="time">
-        <span id="current">0:00</span>
-        <span id="duration">0:00</span>
-    </div>
-
-    <button class="play-btn" id="playBtn">▶</button>
 
     <audio id="audio" src="song1.mp3"></audio>
 

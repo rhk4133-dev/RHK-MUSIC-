@@ -2,22 +2,29 @@
 <html>
 <head>
     <title>RHK Premium Music</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="app">
 
-    <div class="left">
+    <!-- PLAYER SECTION -->
+    <div class="player">
 
-        <div class="cd-container">
-            <div class="cd" id="cd"></div>
+        <div class="cassette" id="cassette">
+            <div class="reel left-reel"></div>
+            <div class="reel right-reel"></div>
         </div>
 
         <h2 id="title">Select a Song</h2>
 
         <div class="controls">
+            <button id="prevBtn">⏮</button>
+            <button id="backBtn">⏪ 10s</button>
             <button id="playBtn">▶</button>
+            <button id="forwardBtn">10s ⏩</button>
+            <button id="nextBtn">⏭</button>
         </div>
 
         <div class="progress-container" id="progressContainer">
@@ -31,7 +38,8 @@
 
     </div>
 
-    <div class="right">
+    <!-- PLAYLIST SECTION -->
+    <div class="playlist-section">
         <h3>Playlist</h3>
         <ul id="playlist"></ul>
     </div>

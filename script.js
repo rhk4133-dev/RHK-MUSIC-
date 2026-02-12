@@ -22,27 +22,79 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-.player {
-    width: 400px;
-    padding: 35px;
-    border-radius: 30px;
+.app {
+    width: 1000px;
+    height: 650px;
+    display: flex;
+    border-radius: 40px;
     background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(25px);
-    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.7);
+    overflow: hidden;
+}
+
+.left {
+    flex: 2;
+    padding: 40px;
     text-align: center;
 }
 
+.right {
+    flex: 1;
+    padding: 40px;
+    background: rgba(0,0,0,0.4);
+    overflow-y: auto;
+}
+
+.right h3 {
+    margin-bottom: 20px;
+}
+
+.right ul {
+    list-style: none;
+}
+
+.right li {
+    padding: 15px;
+    margin-bottom: 10px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.right li:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.right li.active {
+    background: linear-gradient(45deg, red, orange);
+}
+
+.cd-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
 .cd {
-    width: 220px;
-    height: 220px;
+    width: 280px;
+    height: 280px;
     border-radius: 50%;
-    margin: 0 auto 20px;
-    background: radial-gradient(circle at center, #111 20%, #444 21%, #222 40%, #000 100%);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+    background: radial-gradient(circle at center,
+        #000 0%,
+        #111 10%,
+        #8b0000 25%,
+        #ff0000 55%,
+        #b30000 75%,
+        #550000 100%);
+    box-shadow: 
+        0 30px 60px rgba(0,0,0,0.8),
+        inset 0 0 40px rgba(255,255,255,0.2);
 }
 
 .cd.playing {
-    animation: spin 5s linear infinite;
+    animation: spin 4s linear infinite;
 }
 
 @keyframes spin {
@@ -51,51 +103,32 @@ body {
 }
 
 .controls button {
-    width: 60px;
-    height: 60px;
-    font-size: 22px;
+    width: 80px;
+    height: 80px;
+    font-size: 30px;
     border-radius: 50%;
     border: none;
-    margin: 5px;
-    background: linear-gradient(45deg, #00ffcc, #00c3ff);
+    background: linear-gradient(45deg, #ff0000, #ff7300);
     cursor: pointer;
-    box-shadow: 0 0 20px #00ffcc;
+    margin-bottom: 20px;
 }
 
 .progress-container {
-    height: 8px;
+    height: 10px;
     background: rgba(255,255,255,0.2);
     border-radius: 20px;
     cursor: pointer;
-    margin: 15px 0;
+    margin-bottom: 10px;
 }
 
 .progress {
     height: 100%;
     width: 0%;
-    background: #00ffcc;
+    background: red;
     border-radius: 20px;
 }
 
 .time {
     display: flex;
     justify-content: space-between;
-    font-size: 13px;
-}
-
-.playlist {
-    margin-top: 20px;
-    max-height: 120px;
-    overflow-y: auto;
-}
-
-.playlist div {
-    padding: 8px;
-    cursor: pointer;
-    border-radius: 10px;
-}
-
-.playlist div.active {
-    background: #00ffcc;
-    color: black;
 }

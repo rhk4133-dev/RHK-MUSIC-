@@ -1,15 +1,10 @@
-/* ============================= */
-/* 50 SONGS AUTO GENERATOR */
-/* ============================= */
 
 const songs = [];
 
-/* Auto create 50 songs (song1.mp3 to song50.mp3) */
-/* Auto images (img1.jpg to img50.jpg) */
-
+/* Auto 50 Songs */
 for (let i = 1; i <= 50; i++) {
     songs.push({
-        name: "SONG " + i,
+        name: "RHK SONG " + i,
         file: "song" + i + ".mp3",
         img: "img" + i + ".jpg"
     });
@@ -45,11 +40,9 @@ audio.play();
 
 nowTitle.innerText=song.name;
 
-/* Background */
 playerView.style.backgroundImage=`url('${song.img}')`;
 playerView.style.display="flex";
 
-/* CD */
 cd.style.backgroundImage=`url('${song.img}')`;
 cd.classList.add("playing");
 }
@@ -60,7 +53,6 @@ audio.pause();
 cd.classList.remove("playing");
 }
 
-/* Search */
 function searchSong(){
 let input=document.getElementById("searchBar").value.toLowerCase();
 document.querySelectorAll(".song-card").forEach(card=>{

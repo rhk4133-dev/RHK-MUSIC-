@@ -7,40 +7,49 @@
 </head>
 <body>
 
-<!-- 🔥 HOMEPAGE -->
+<!-- HOME PAGE -->
 <div id="homePage" class="home">
     <h1>🎵 RHK MUSIC 🎵</h1>
     <button onclick="enterApp()">CLICK HERE TO LISTEN SONG</button>
 </div>
 
-<!-- 🔥 MUSIC APP -->
+<!-- MUSIC PAGE -->
 <div id="musicApp" class="app" style="display:none;">
 
     <input type="text" id="searchBar" placeholder="Search song..." onkeyup="searchSong()">
 
     <div class="columns">
 
-        <!-- Kannada -->
         <div class="column">
             <h2>Kannada</h2>
             <ul id="kannadaList"></ul>
         </div>
 
-        <!-- Hindi -->
         <div class="column">
             <h2>Hindi</h2>
             <ul id="hindiList"></ul>
         </div>
 
-        <!-- English -->
+        <div class="column">
+            <h2>Tamil</h2>
+            <ul id="tamilList"></ul>
+        </div>
+
         <div class="column">
             <h2>English</h2>
-            <ul id="englishList"></ul>
+            <ul>
+                <li>Not Available</li>
+            </ul>
         </div>
 
     </div>
 
-    <audio id="audio" controls></audio>
+    <!-- BIG PLAYER -->
+    <div class="player">
+        <img id="playerImg" src="" alt="">
+        <h3 id="playerTitle"></h3>
+        <audio id="audio" controls></audio>
+    </div>
 
 </div>
 

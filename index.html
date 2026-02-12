@@ -1,57 +1,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RHK MUSIC</title>
-  <link rel="stylesheet" href="style.css">
+    <title>RHK Music</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1 class="logo">RHK MUSIC</h1>
+<h1 class="title">RHK MUSIC</h1>
 
 <div class="container">
 
-  <!-- Song 1 -->
-  <div class="card">
-    <div class="disc"></div>
-    <h3>Song 1</h3>
-    <audio src="song1.mp3"></audio>
-    <button onclick="playSong(this)">▶</button>
-  </div>
+    <!-- Song 1 -->
+    <div class="player">
+        <div class="cd"></div>
+        <h2>Song 1</h2>
+        <button onclick="playSong(0)">Play</button>
+        <audio src="song1.mp3"></audio>
+    </div>
 
-  <!-- Song 2 -->
-  <div class="card">
-    <div class="disc"></div>
-    <h3>Song 2</h3>
-    <audio src="song2.mp3"></audio>
-    <button onclick="playSong(this)">▶</button>
-  </div>
+    <!-- Song 2 -->
+    <div class="player">
+        <div class="cd"></div>
+        <h2>Song 2</h2>
+        <button onclick="playSong(1)">Play</button>
+        <audio src="song2.mp3"></audio>
+    </div>
 
-  <!-- Song 3 -->
-  <div class="card">
-    <div class="disc"></div>
-    <h3>Song 3</h3>
-    <audio src="song3.mp3"></audio>
-    <button onclick="playSong(this)">▶</button>
-  </div>
+    <!-- Song 3 -->
+    <div class="player">
+        <div class="cd"></div>
+        <h2>Song 3</h2>
+        <button onclick="playSong(2)">Play</button>
+        <audio src="song3.mp3"></audio>
+    </div>
 
-  <!-- Song 4 -->
-  <div class="card">
-    <div class="disc"></div>
-    <h3>Song 4</h3>
-    <audio src="song4.mp3"></audio>
-    <button onclick="playSong(this)">▶</button>
-  </div>
+    <!-- Song 4 -->
+    <div class="player">
+        <div class="cd"></div>
+        <h2>Song 4</h2>
+        <button onclick="playSong(3)">Play</button>
+        <audio src="song4.mp3"></audio>
+    </div>
 
-  <!-- Song 5 -->
-  <div class="card">
-    <div class="disc"></div>
-    <h3>Song 5</h3>
-    <audio src="song5.mp3"></audio>
-    <button onclick="playSong(this)">▶</button>
-  </div>
+    <!-- Song 5 -->
+    <div class="player">
+        <div class="cd"></div>
+        <h2>Song 5</h2>
+        <button onclick="playSong(4)">Play</button>
+        <audio src="song5.mp3"></audio>
+    </div>
 
 </div>
 
-<script src="script.js"></script>
+<script>
+function playSong(index) {
+    let players = document.querySelectorAll(".player");
+    let audios = document.querySelectorAll("audio");
+
+    audios.forEach((audio, i) => {
+        let button = players[i].querySelector("button");
+        let cd = players[i].querySelector(".cd");
+
+        if (i === index) {
+            if (audio.paused) {
+                audio.play();
+                button.innerText = "Pause";
+                cd.classList.add("rotate");
+            } else {
+                audio.pause();
+                button.innerText = "Play";
+                cd.classList.remove("rotate");
+            }
+        } else {
+            audio.pause();
+            audio.currentTime = 0;
+            players[i].querySelector("button").innerText = "Play";
+            players[i].querySelector(".cd").classList.remove("rotate");
+        }
+    });
+}
+</script>
+
 </body>
 </html>

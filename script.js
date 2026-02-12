@@ -1,25 +1,29 @@
 const songs = [
-    { name: "DIL LAGANA MANATHA", file: "song1.mp3", img: "img1.jpg" },
-    { name: "KAGADADA DONIYALLI", file: "song2.mp3", img: "img2.jpg" },
-    { name: "KANAVE KANAVE", file: "song3.mp3", img: "img3.jpg" },
-    { name: "KANTHARA THE PART 2", file: "song4.mp3", img: "img4.jpg" },
-    { name: "ZARA ZARA", file: "song5.mp3", img: "img5.jpg" }
+    { name: "DIL LAGANA MANATHA", file: "song1.mp3" },
+    { name: "KAGADADA DONIYALLI", file: "song2.mp3" },
+    { name: "KANAVE KANAVE", file: "song3.mp3" },
+    { name: "KANTHARA THE PART 2", file: "song4.mp3" },
+    { name: "ZARA ZARA", file: "song5.mp3" }
 ];
 
 const audio = document.getElementById("audio");
 const playBtn = document.getElementById("playBtn");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const backBtn = document.getElementById("backBtn");
+const forwardBtn = document.getElementById("forwardBtn");
 const progress = document.getElementById("progress");
 const progressContainer = document.getElementById("progressContainer");
 const currentTimeEl = document.getElementById("current");
 const durationEl = document.getElementById("duration");
 const playlist = document.getElementById("playlist");
 const title = document.getElementById("title");
-const cd = document.getElementById("cd");
+const cassette = document.getElementById("cassette");
 
 let currentSong = 0;
 let isPlaying = false;
 
-/* Create playlist */
+/* Create Playlist */
 songs.forEach((song, index) => {
     const li = document.createElement("li");
     li.innerText = song.name;
@@ -32,20 +36,17 @@ function loadSong(index) {
     audio.src = songs[index].file;
     title.innerText = songs[index].name;
 
-    cd.style.backgroundImage = `url(${songs[index].img})`;
-
-    document.querySelectorAll("#playlist li").forEach(li => li.classList.remove("active"));
+    document.querySelectorAll("li").forEach(li => li.classList.remove("active"));
     playlist.children[index].classList.add("active");
 
     audio.play();
     playBtn.innerText = "⏸";
-    cd.classList.add("playing");
+    cassette.classList.add("playing");
     isPlaying = true;
 }
 
 /* Play / Pause */
 playBtn.addEventListener("click", () => {
-
     if (!audio.src) {
         loadSong(0);
         return;
@@ -54,14 +55,34 @@ playBtn.addEventListener("click", () => {
     if (isPlaying) {
         audio.pause();
         playBtn.innerText = "▶";
-        cd.classList.remove("playing");
+        cassette.classList.remove("playing");
     } else {
         audio.play();
         playBtn.innerText = "⏸";
-        cd.classList.add("playing");
+        cassette.classList.add("playing");
     }
 
     isPlaying = !isPlaying;
+});
+
+/* Next / Previous */
+nextBtn.addEventListener("click", () => {
+    let next = (currentSong + 1) % songs.length;
+    loadSong(next);
+});
+
+prevBtn.addEventListener("click", () => {
+    let prev = (currentSong - 1 + songs.length) % songs.length;
+    loadSong(prev);
+});
+
+/* 10 Seconds Forward / Back */
+forwardBtn.addEventListener("click", () => {
+    audio.currentTime += 10;
+});
+
+backBtn.addEventListener("click", () => {
+    audio.currentTime -= 10;
 });
 
 /* Progress */
@@ -87,6 +108,6 @@ function formatTime(time) {
 
 /* Auto Next */
 audio.addEventListener("ended", () => {
-    let next = (currentSong + 1) % songs.length;
-    loadSong(next);
+    nextBtn.click();
 });
+

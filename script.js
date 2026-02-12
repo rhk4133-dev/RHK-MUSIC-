@@ -1,9 +1,10 @@
 const audio = document.getElementById("audio");
 const playBtn = document.getElementById("playBtn");
 const progress = document.getElementById("progress");
-const progressContainer = document.querySelector(".progress-container");
+const progressContainer = document.getElementById("progressContainer");
 const currentTimeEl = document.getElementById("current");
 const durationEl = document.getElementById("duration");
+const album = document.getElementById("album");
 
 let isPlaying = false;
 
@@ -11,9 +12,11 @@ playBtn.addEventListener("click", () => {
     if (isPlaying) {
         audio.pause();
         playBtn.innerText = "▶";
+        album.classList.remove("playing");
     } else {
         audio.play();
         playBtn.innerText = "⏸";
+        album.classList.add("playing");
     }
     isPlaying = !isPlaying;
 });

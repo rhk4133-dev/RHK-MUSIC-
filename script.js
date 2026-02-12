@@ -1,9 +1,9 @@
 const songs = [
-    { name: "Song 1", file: "song1.mp3" },
-    { name: "Song 2", file: "song2.mp3" },
-    { name: "Song 3", file: "song3.mp3" },
-    { name: "Song 4", file: "song4.mp3" },
-    { name: "Song 5", file: "song5.mp3" }
+    { name: "DIL LAGANA MANATHA", file: "song1.mp3" },
+    { name: "KAGADADA DONIYALLI", file: "song2.mp3" },
+    { name: "KANAVE KANAVE", file: "song3.mp3" },
+    { name: "NOT 🚫 AVAILABLE", file: "song4.mp3" },
+    { name: "ZARA ZARA", file: "song5.mp3" }
 ];
 
 const audio = document.getElementById("audio");

@@ -1,50 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>RHK MUSIC</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>RHK MUSIC</h1>
-    </header>
+<h1 class="logo">RHK MUSIC</h1>
 
-    <div class="container">
+<div class="music-container">
 
-        <div class="song-card" onclick="playSong(0)">
-            <img src="https://picsum.photos/200?1">
-            <h3>Song 1</h3>
+    <!-- Song 1 -->
+    <div class="card" onclick="playSong(0)">
+        <img src="https://picsum.photos/300?1">
+        <h3>Song 1</h3>
+        <div class="time">
+            <span>00:00</span>
+            <span>3:02</span>
         </div>
-
-        <div class="song-card" onclick="playSong(1)">
-            <img src="https://picsum.photos/200?2">
-            <h3>Song 2</h3>
-        </div>
-
-        <div class="song-card" onclick="playSong(2)">
-            <img src="https://picsum.photos/200?3">
-            <h3>Song 3</h3>
-        </div>
-
-        <div class="song-card" onclick="playSong(3)">
-            <img src="https://picsum.photos/200?4">
-            <h3>Song 4</h3>
-        </div>
-
-        <div class="song-card" onclick="playSong(4)">
-            <img src="https://picsum.photos/200?5">
-            <h3>Song 5</h3>
-        </div>
-
+        <button class="play-btn">▶</button>
     </div>
 
-    <div class="player">
-        <p id="nowPlaying">Select a song</p>
-        <button onclick="togglePlay()">Play / Pause</button>
+    <!-- Song 2 -->
+    <div class="card" onclick="playSong(1)">
+        <img src="https://picsum.photos/300?2">
+        <h3>Song 2</h3>
+        <div class="time">
+            <span>00:00</span>
+            <span>3:02</span>
+        </div>
+        <button class="play-btn">▶</button>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Song 3 -->
+    <div class="card" onclick="playSong(2)">
+        <img src="https://picsum.photos/300?3">
+        <h3>Song 3</h3>
+        <div class="time">
+            <span>00:00</span>
+            <span>3:02</span>
+        </div>
+        <button class="play-btn">▶</button>
+    </div>
+
+    <!-- Song 4 -->
+    <div class="card" onclick="playSong(3)">
+        <img src="https://picsum.photos/300?4">
+        <h3>Song 4</h3>
+        <div class="time">
+            <span>00:00</span>
+            <span>3:02</span>
+        </div>
+        <button class="play-btn">▶</button>
+    </div>
+
+    <!-- Song 5 (centered bottom) -->
+    <div class="card center-card" onclick="playSong(4)">
+        <img src="https://picsum.photos/300?5">
+        <h3>Song 5</h3>
+        <div class="time">
+            <span>00:00</span>
+            <span>3:02</span>
+        </div>
+        <button class="play-btn">▶</button>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>

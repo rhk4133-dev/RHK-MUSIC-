@@ -312,3 +312,45 @@ cursor:pointer;
     animation: none;
     height: 10px;
 }
+
+/* ============================= */
+/* 🔥 CIRCULAR ENERGY RING 🔥 */
+/* ============================= */
+
+.cd-container {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    margin: auto;
+}
+
+.energy-ring {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 290px;
+    height: 290px;
+    border-radius: 50%;
+    border: 4px solid transparent;
+    background: conic-gradient(
+        #ff512f,
+        #dd2476,
+        #ff512f,
+        #dd2476,
+        #ff512f
+    );
+    filter: blur(8px);
+    animation: rotateRing 4s linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes rotateRing {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Stop ring when paused */
+.energy-ring.paused {
+    animation: none;
+    opacity: 0.3;
+}

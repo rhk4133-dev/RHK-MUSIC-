@@ -3,7 +3,7 @@ const songs=[
 {name:"KANAVE KANAVE",file:"song2.mp3",img:"img2.jpg"},
 {name:"TAMIL SONG",file:"song3.mp3",img:"img3.jpg"},
 {name:"DIL LAGANA MANATHA",file:"song4.mp3",img:"img4.jpg"},
-{name:"ZARA ZARA",file:"song5.mp3",img:"img5.jpg"}
+{name:"ZARA ZARA",file:"song5.mp3",img:"img5.jpg"}{ name: "ORUM BLOOD", file: "song6.mp3", img: "img6.jpg" }
 ];
 
 const audio=document.getElementById("audio");

@@ -1,69 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>RHK MUSIC</title>
+    <title>RHK Premium Music</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1 class="logo">RHK MUSIC</h1>
+<div class="player">
 
-<div class="music-container">
+    <!-- NOW PLAYING -->
+    <div class="now-playing">
+        <div class="album" id="album"></div>
+        <h2 id="title">Song 1</h2>
 
-    <!-- Song 1 -->
-    <div class="card" onclick="playSong(0)">
-        <img src="https://picsum.photos/300?1">
-        <h3>Song 1</h3>
-        <div class="time">
-            <span>00:00</span>
-            <span>3:02</span>
+        <div class="progress-container" id="progressContainer">
+            <div class="progress" id="progress"></div>
         </div>
-        <button class="play-btn">▶</button>
+
+        <div class="time">
+            <span id="current">0:00</span>
+            <span id="duration">0:00</span>
+        </div>
+
+        <button id="playBtn">▶</button>
     </div>
 
-    <!-- Song 2 -->
-    <div class="card" onclick="playSong(1)">
-        <img src="https://picsum.photos/300?2">
-        <h3>Song 2</h3>
-        <div class="time">
-            <span>00:00</span>
-            <span>3:02</span>
-        </div>
-        <button class="play-btn">▶</button>
+    <!-- SCROLL SONG LIST -->
+    <div class="song-list" id="songList">
+        <div class="song active" data-src="song1.mp3">Song 1</div>
+        <div class="song" data-src="song2.mp3">Song 2</div>
+        <div class="song" data-src="song3.mp3">Song 3</div>
+        <div class="song" data-src="song4.mp3">Song 4</div>
+        <div class="song" data-src="song5.mp3">Song 5</div>
     </div>
 
-    <!-- Song 3 -->
-    <div class="card" onclick="playSong(2)">
-        <img src="https://picsum.photos/300?3">
-        <h3>Song 3</h3>
-        <div class="time">
-            <span>00:00</span>
-            <span>3:02</span>
-        </div>
-        <button class="play-btn">▶</button>
-    </div>
-
-    <!-- Song 4 -->
-    <div class="card" onclick="playSong(3)">
-        <img src="https://picsum.photos/300?4">
-        <h3>Song 4</h3>
-        <div class="time">
-            <span>00:00</span>
-            <span>3:02</span>
-        </div>
-        <button class="play-btn">▶</button>
-    </div>
-
-    <!-- Song 5 (centered bottom) -->
-    <div class="card center-card" onclick="playSong(4)">
-        <img src="https://picsum.photos/300?5">
-        <h3>Song 5</h3>
-        <div class="time">
-            <span>00:00</span>
-            <span>3:02</span>
-        </div>
-        <button class="play-btn">▶</button>
-    </div>
+    <audio id="audio" src="song1.mp3"></audio>
 
 </div>
 

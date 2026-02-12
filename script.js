@@ -95,6 +95,7 @@ function minus10(){
 }
 
 function goBack(){
+energyRing.classList.add("paused");
     soundWave.classList.add("paused");
     playerView.style.display="none";
     audio.pause();

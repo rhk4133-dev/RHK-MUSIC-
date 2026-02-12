@@ -1,85 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>RHK Music</title>
+    <title>RHK Premium Player</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1 class="title">RHK MUSIC</h1>
+<div class="player">
 
-<div class="container">
-
-    <!-- Song 1 -->
-    <div class="player">
-        <div class="cd"></div>
-        <h2>Song 1</h2>
-        <button onclick="playSong(0)">Play</button>
-        <audio src="song1.mp3"></audio>
+    <div class="cd-container">
+        <div class="cd" id="cd"></div>
     </div>
 
-    <!-- Song 2 -->
-    <div class="player">
-        <div class="cd"></div>
-        <h2>Song 2</h2>
-        <button onclick="playSong(1)">Play</button>
-        <audio src="song2.mp3"></audio>
+    <h2>RHK Music</h2>
+    <p id="songTitle">Song 1</p>
+
+    <div class="controls">
+        <button id="prevBtn">⏮</button>
+        <button id="playBtn">▶</button>
+        <button id="nextBtn">⏭</button>
     </div>
 
-    <!-- Song 3 -->
-    <div class="player">
-        <div class="cd"></div>
-        <h2>Song 3</h2>
-        <button onclick="playSong(2)">Play</button>
-        <audio src="song3.mp3"></audio>
+    <div class="progress-container" id="progressContainer">
+        <div class="progress" id="progress"></div>
     </div>
 
-    <!-- Song 4 -->
-    <div class="player">
-        <div class="cd"></div>
-        <h2>Song 4</h2>
-        <button onclick="playSong(3)">Play</button>
-        <audio src="song4.mp3"></audio>
+    <div class="time">
+        <span id="current">0:00</span>
+        <span id="duration">0:00</span>
     </div>
 
-    <!-- Song 5 -->
-    <div class="player">
-        <div class="cd"></div>
-        <h2>Song 5</h2>
-        <button onclick="playSong(4)">Play</button>
-        <audio src="song5.mp3"></audio>
-    </div>
+    <div class="playlist" id="playlist"></div>
+
+    <audio id="audio"></audio>
 
 </div>
 
-<script>
-function playSong(index) {
-    let players = document.querySelectorAll(".player");
-    let audios = document.querySelectorAll("audio");
-
-    audios.forEach((audio, i) => {
-        let button = players[i].querySelector("button");
-        let cd = players[i].querySelector(".cd");
-
-        if (i === index) {
-            if (audio.paused) {
-                audio.play();
-                button.innerText = "Pause";
-                cd.classList.add("rotate");
-            } else {
-                audio.pause();
-                button.innerText = "Play";
-                cd.classList.remove("rotate");
-            }
-        } else {
-            audio.pause();
-            audio.currentTime = 0;
-            players[i].querySelector("button").innerText = "Play";
-            players[i].querySelector(".cd").classList.remove("rotate");
-        }
-    });
-}
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>

@@ -1,5 +1,35 @@
 const songs = [];
 
+/* ADD YOUR CUSTOM SONGS FIRST (ORDER GIVEN) */
+songs.push(
+    {
+        name: "ದಿಲ್ ಲಗಾನಾ ಮನತಾ",
+        file: "dil_lagana.mp3",
+        img: "dil_lagana.jpg"
+    },
+    {
+        name: "ಕಾಗದದ ದೋಣಿಯಲ್ಲಿ",
+        file: "kagadada_doniyalli.mp3",
+        img: "kagadada_doniyalli.jpg"
+    },
+    {
+        name: "ಕನವೇ ಕನವೇ",
+        file: "kanave_kanave.mp3",
+        img: "kanave_kanave.jpg"
+    },
+    {
+        name: "ಜರಾ ಜರಾ",
+        file: "zara_zara.mp3",
+        img: "zara_zara.jpg"
+    },
+    {
+        name: "ಒರುಮ್ ಬ್ಲಡ್",
+        file: "orum_blood.mp3",
+        img: "orum_blood.jpg"
+    }
+);
+
+/* KEEP YOUR ORIGINAL 50 SONGS (NO CHANGE) */
 for (let i = 1; i <= 50; i++) {
     songs.push({
         name: "RHK SONG " + i,

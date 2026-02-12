@@ -1,84 +1,44 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
+const audio = document.getElementById("audio");
+const playBtn = document.getElementById("playBtn");
+const progress = document.getElementById("progress");
+const progressContainer = document.querySelector(".progress-container");
+const currentTimeEl = document.getElementById("current");
+const durationEl = document.getElementById("duration");
 
-body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-}
+let isPlaying = false;
 
-.music-card {
-    width: 320px;
-    padding: 25px;
-    border-radius: 25px;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-    text-align: center;
-    color: white;
-}
+playBtn.addEventListener("click", () => {
+    if (isPlaying) {
+        audio.pause();
+        playBtn.innerText = "▶";
+    } else {
+        audio.play();
+        playBtn.innerText = "⏸";
+    }
+    isPlaying = !isPlaying;
+});
 
-.cover {
-    width: 200px;
-    height: 200px;
-    margin: 0 auto 20px;
-    border-radius: 20px;
-    background: linear-gradient(45deg, #1db954, #191414);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-}
+audio.addEventListener("timeupdate", () => {
+    const { currentTime, duration } = audio;
 
-h1 {
-    font-size: 22px;
-    margin-bottom: 5px;
-}
+    const progressPercent = (currentTime / duration) * 100;
+    progress.style.width = progressPercent + "%";
 
-h2 {
-    font-size: 16px;
-    font-weight: normal;
-    opacity: 0.8;
-    margin-bottom: 20px;
-}
+    currentTimeEl.innerText = formatTime(currentTime);
+    durationEl.innerText = formatTime(duration);
+});
 
-.controls button {
-    background: #1db954;
-    border: none;
-    color: black;
-    font-size: 20px;
-    padding: 12px 20px;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: 0.3s;
-}
+progressContainer.addEventListener("click", (e) => {
+    const width = progressContainer.clientWidth;
+    const clickX = e.offsetX;
+    const duration = audio.duration;
 
-.controls button:hover {
-    transform: scale(1.1);
-}
+    audio.currentTime = (clickX / width) * duration;
+});
 
-.progress-container {
-    width: 100%;
-    height: 6px;
-    background: rgba(255,255,255,0.2);
-    border-radius: 10px;
-    margin: 20px 0 10px;
-    cursor: pointer;
-}
-
-.progress {
-    height: 100%;
-    width: 0%;
-    background: #1db954;
-    border-radius: 10px;
-}
-
-.time {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    opacity: 0.8;
+function formatTime(time) {
+    if (isNaN(time)) return "0:00";
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60).toString().padStart(2, "0");
+    return minutes + ":" + seconds;
 }

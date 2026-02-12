@@ -1,19 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>RHK Music</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <h1>🎵 RHK Music 🎵</h1>
+<div class="music-card">
+    <div class="cover"></div>
 
-        <div id="songList"></div>
+    <h1>RHK Music</h1>
+    <h2>Song 1</h2>
 
-        <audio id="player" controls></audio>
+    <div class="controls">
+        <button id="playBtn">▶</button>
     </div>
 
-    <script src="script.js"></script>
+    <div class="progress-container">
+        <div class="progress" id="progress"></div>
+    </div>
+
+    <div class="time">
+        <span id="current">0:00</span>
+        <span id="duration">0:00</span>
+    </div>
+
+    <audio id="audio" src="song1.mp3"></audio>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>

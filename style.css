@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: white;
+    text-align: center;
+}
+
+.container {
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 30px;
+}
+
+.song {
+    background: #222;
+    padding: 15px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.song:hover {
+    background: #444;
+}
+
+audio {
+    width: 100%;
+    margin-top: 30px;
+}

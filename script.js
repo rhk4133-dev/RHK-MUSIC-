@@ -1,4 +1,3 @@
-
 const songs = [];
 
 /* Auto 50 Songs */
@@ -15,7 +14,8 @@ const songGrid = document.getElementById("songGrid");
 const playerView = document.getElementById("playerView");
 const cd = document.getElementById("cd");
 const nowTitle = document.getElementById("nowTitle");
-const playBtn = document.getElementById("playBtn");
+
+let currentIndex = 0;
 
 function enterApp(){
     document.getElementById("homePage").style.display="none";
@@ -23,71 +23,68 @@ function enterApp(){
 }
 
 /* Load Songs */
-songs.forEach(song=>{
+songs.forEach((song,index)=>{
     const card=document.createElement("div");
     card.className="song-card";
     card.innerHTML=`
-        <img src="${song.img}">
-        <h3>${song.name}</h3>
+    <img src="${song.img}">
+    <h3>${song.name}</h3>
     `;
-    card.onclick=()=>playSong(song);
+    card.onclick=()=>playSong(index);
     songGrid.appendChild(card);
 });
 
-function playSong(song){
-    audio.src=song.file;
+function playSong(index){
+
+    currentIndex = index;
+
+    audio.src = songs[index].file;
     audio.play();
 
-    nowTitle.innerText=song.name;
-    playBtn.innerText="⏸ Pause";
+    nowTitle.innerText = songs[index].name;
 
-    playerView.style.backgroundImage=`url('${song.img}')`;
+    playerView.style.backgroundImage=`url('${songs[index].img}')`;
     playerView.style.display="flex";
 
-    cd.style.backgroundImage=`url('${song.img}')`;
+    cd.style.backgroundImage=`url('${songs[index].img}')`;
     cd.classList.add("playing");
+}
+
+function togglePlay(){
+    if(audio.paused){
+        audio.play();
+        cd.classList.add("playing");
+    } else {
+        audio.pause();
+        cd.classList.remove("playing");
+    }
+}
+
+function nextSong(){
+    currentIndex++;
+    if(currentIndex >= songs.length) currentIndex = 0;
+    playSong(currentIndex);
+}
+
+function prevSong(){
+    currentIndex--;
+    if(currentIndex < 0) currentIndex = songs.length - 1;
+    playSong(currentIndex);
+}
+
+function forward10(){
+    audio.currentTime += 10;
+}
+
+function backward10(){
+    audio.currentTime -= 10;
 }
 
 function goBack(){
     playerView.style.display="none";
     audio.pause();
     cd.classList.remove("playing");
-    playBtn.innerText="▶ Play";
 }
-
-/* Play / Pause Toggle */
-function togglePlay(){
-    if(audio.paused){
-        audio.play();
-        cd.classList.add("playing");
-        playBtn.innerText="⏸ Pause";
-    }else{
-        audio.pause();
-        cd.classList.remove("playing");
-        playBtn.innerText="▶ Play";
-    }
-}
-
-/* Forward / Backward 10 Seconds */
-playerView.addEventListener("dblclick", function(e){
-
-    let clickPosition = e.clientX;
-    let screenWidth = window.innerWidth;
-
-    if(clickPosition > screenWidth/2){
-        audio.currentTime += 10; // forward
-    }
-    else{
-        audio.currentTime -= 10; // backward
-    }
-
-});
-
-/* Stop spinning when song ends */
-audio.addEventListener("ended",()=>{
-    cd.classList.remove("playing");
-    playBtn.innerText="▶ Play";
-});
 
 function searchSong(){
     let input=document.getElementById("searchBar").value.toLowerCase();

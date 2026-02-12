@@ -1,8 +1,8 @@
 const songs = [
-    {name:"KANAVE KANAVE", file:"song2.mp3", img:"img2.jpg", lang:"kannada"},
+    {name:"KAGADADA DONIYALLI", file:"song2.mp3", img:"img2.jpg", lang:"kannada"},
     {name:"KANTHARA THE PART 2", file:"song4.mp3", img:"img4.jpg", lang:"kannada"},
     {name:"ZARA ZARA", file:"song5.mp3", img:"img5.jpg", lang:"hindi"},
-    {name:"TAMIL SONG", file:"song3.mp3", img:"img3.jpg", lang:"tamil"}
+    {name:"KANAVE KANAVE", file:"song3.mp3", img:"img3.jpg", lang:"tamil"}
 ];
 
 const audio = document.getElementById("audio");

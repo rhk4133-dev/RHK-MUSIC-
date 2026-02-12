@@ -1,10 +1,11 @@
-{
+
+
+* {
 margin: 0;
 padding: 0;
 box-sizing: border-box;
 font-family: Arial, sans-serif;
 }
-
 
 body {
 height: 100vh;
@@ -82,16 +83,26 @@ margin-bottom: 30px;
 width: 280px;
 height: 280px;
 border-radius: 50%;
-background: radial-gradient(circle at center,
-#000 0%,
-#111 10%,
-#8b0000 25%,
-#ff0000 55%,
-#b30000 75%,
-#550000 100%);
+background-color: black;
+background-size: cover;
+background-position: center;
 box-shadow:
 0 30px 60px rgba(0,0,0,0.8),
 inset 0 0 40px rgba(255,255,255,0.2);
+position: relative;
+}
+
+/* CD center hole */
+.cd::after {
+content: "";
+position: absolute;
+width: 40px;
+height: 40px;
+background: black;
+border-radius: 50%;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
 }
 
 .cd.playing {
@@ -112,6 +123,7 @@ border: none;
 background: linear-gradient(45deg, #ff0000, #ff7300);
 cursor: pointer;
 margin-bottom: 20px;
+color: white;
 }
 
 .progress-container {
@@ -131,4 +143,6 @@ border-radius: 20px;
 
 .time {
 display: flex;
-justify-content: }
+justify-content: space-between;
+font-size: 14px;
+}

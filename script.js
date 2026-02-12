@@ -1,19 +1,84 @@
-const songs = [
-    { name: "Song 1", file: "song1.mp3" }
-];
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-const songList = document.getElementById("songList");
-const player = document.getElementById("player");
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
 
-songs.forEach(song => {
-    const div = document.createElement("div");
-    div.className = "song";
-    div.innerText = song.name;
+.music-card {
+    width: 320px;
+    padding: 25px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    text-align: center;
+    color: white;
+}
 
-    div.onclick = () => {
-        player.src = song.file;
-        player.play();
-    };
+.cover {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 20px;
+    border-radius: 20px;
+    background: linear-gradient(45deg, #1db954, #191414);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
 
-    songList.appendChild(div);
-});
+h1 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+h2 {
+    font-size: 16px;
+    font-weight: normal;
+    opacity: 0.8;
+    margin-bottom: 20px;
+}
+
+.controls button {
+    background: #1db954;
+    border: none;
+    color: black;
+    font-size: 20px;
+    padding: 12px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.controls button:hover {
+    transform: scale(1.1);
+}
+
+.progress-container {
+    width: 100%;
+    height: 6px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    margin: 20px 0 10px;
+    cursor: pointer;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background: #1db954;
+    border-radius: 10px;
+}
+
+.time {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    opacity: 0.8;
+}

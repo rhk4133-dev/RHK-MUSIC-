@@ -1,40 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>RHK Premium Player</title>
+    <title>RHK Premium Music</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="player">
+<div class="app">
 
-    <div class="cd-container">
-        <div class="cd" id="cd"></div>
+    <div class="left">
+
+        <div class="cd-container">
+            <div class="cd" id="cd"></div>
+        </div>
+
+        <h2 id="title">Song 1</h2>
+
+        <div class="controls">
+            <button id="playBtn">▶</button>
+        </div>
+
+        <div class="progress-container" id="progressContainer">
+            <div class="progress" id="progress"></div>
+        </div>
+
+        <div class="time">
+            <span id="current">0:00</span>
+            <span id="duration">0:00</span>
+        </div>
+
     </div>
 
-    <h2>RHK Music</h2>
-    <p id="songTitle">Song 1</p>
-
-    <div class="controls">
-        <button id="prevBtn">⏮</button>
-        <button id="playBtn">▶</button>
-        <button id="nextBtn">⏭</button>
+    <div class="right">
+        <h3>Playlist</h3>
+        <ul id="playlist"></ul>
     </div>
-
-    <div class="progress-container" id="progressContainer">
-        <div class="progress" id="progress"></div>
-    </div>
-
-    <div class="time">
-        <span id="current">0:00</span>
-        <span id="duration">0:00</span>
-    </div>
-
-    <div class="playlist" id="playlist"></div>
-
-    <audio id="audio"></audio>
 
 </div>
+
+<audio id="audio"></audio>
 
 <script src="script.js"></script>
 </body>

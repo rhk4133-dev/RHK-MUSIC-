@@ -1,138 +1,38 @@
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-font-family: Arial, sans-serif;
-}
+/* HOME PAGE */
 
-body {
-height: 100vh;
-background: linear-gradient(135deg, #141E30, #243B55);
-display: flex;
-justify-content: center;
-align-items: center;
-color: white;
-}
-
-.app {
-width: 100%;
-max-width: 500px;
+.home {
 height: 100vh;
 display: flex;
 flex-direction: column;
-background: rgba(255,255,255,0.05);
-backdrop-filter: blur(15px);
+justify-content: center;
+align-items: center;
+background: linear-gradient(135deg, gold, orange);
+animation: glow 3s infinite alternate;
 }
 
-/* PLAYER TOP */
-.player {
-flex: 1;
-padding: 20px;
-text-align: center;
-}
-
-/* CASSETTE DESIGN */
-.cassette {
-width: 280px;
-height: 160px;
-background: #222;
-margin: 20px auto;
-border-radius: 15px;
-position: relative;
-box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-}
-
-.reel {
-width: 60px;
-height: 60px;
-border: 8px solid #555;
-border-radius: 50%;
-position: absolute;
-top: 50%;
-transform: translateY(-50%);
-background: black;
-}
-
-.left-reel {
-left: 50px;
-}
-
-.right-reel {
-right: 50px;
-}
-
-.cassette.playing .reel {
-animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-from { transform: translateY(-50%) rotate(0deg); }
-to { transform: translateY(-50%) rotate(360deg); }
-}
-
-/* CONTROLS */
-.controls {
-margin: 15px 0;
-}
-
-.controls button {
-margin: 5px;
-padding: 10px 12px;
-border: none;
-border-radius: 10px;
-background: linear-gradient(45deg, red, orange);
+.logo {
+font-size: 45px;
 color: white;
-font-size: 14px;
-cursor: pointer;
+text-shadow: 0 0 20px gold, 0 0 40px orange;
+margin-bottom: 30px;
 }
 
-/* PROGRESS */
-.progress-container {
-height: 8px;
-background: rgba(255,255,255,0.2);
-border-radius: 10px;
-cursor: pointer;
-}
-
-.progress {
-height: 100%;
-width: 0%;
-background: red;
-border-radius: 10px;
-}
-
-.time {
-display: flex;
-justify-content: space-between;
-font-size: 13px;
-margin-top: 5px;
-}
-
-/* PLAYLIST BOTTOM */
-.playlist-section {
-flex: 1;
-background: rgba(0,0,0,0.4);
-padding: 15px;
-overflow-y: auto;
-}
-
-.playlist-section ul {
-list-style: none;
-}
-
-.playlist-section li {
-padding: 12px;
-margin-bottom: 10px;
-background: rgba(255,255,255,0.1);
-border-radius: 10px;
+.enter-btn {
+padding: 15px 30px;
+font-size: 18px;
+border: none;
+border-radius: 30px;
+background: white;
+color: black;
 cursor: pointer;
 transition: 0.3s;
 }
 
-.playlist-section li:hover {
-background: rgba(255,255,255,0.3);
+.enter-btn:hover {
+transform: scale(1.1);
 }
 
-.playlist-section li.active {
-background: linear-gradient(45deg, red, orange);
+@keyframes glow {
+from { filter: brightness(1); }
+to { filter: brightness(1.3); }
 }

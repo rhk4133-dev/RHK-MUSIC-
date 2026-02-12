@@ -1,9 +1,9 @@
 const songs = [
-    { name: "DIL LAGANA MANATHA", file: "song1.mp3" },
-    { name: "KAGADADA DONIYALLI", file: "song2.mp3" },
-    { name: "KANAVE KANAVE", file: "song3.mp3" },
-    { name: "KANTHARA THE PART 2", file: "song4.mp3" },
-    { name: "ZARA ZARA", file: "song5.mp3" }
+    { name: "DIL LAGANA MANATHA", file: "song1.mp3", img: "img1.jpg" },
+    { name: "KAGADADA DONIYALLI", file: "song2.mp3", img: "img2.jpg" },
+    { name: "KANAVE KANAVE", file: "song3.mp3", img: "img3.jpg" },
+    { name: "KANTHARA THE PART 2", file: "song4.mp3", img: "img4.jpg" },
+    { name: "ZARA ZARA", file: "song5.mp3", img: "img5.jpg" }
 ];
 
 const audio = document.getElementById("audio");
@@ -32,6 +32,8 @@ function loadSong(index) {
     audio.src = songs[index].file;
     title.innerText = songs[index].name;
 
+    cd.style.backgroundImage = `url(${songs[index].img})`;
+
     document.querySelectorAll("#playlist li").forEach(li => li.classList.remove("active"));
     playlist.children[index].classList.add("active");
 
@@ -41,9 +43,13 @@ function loadSong(index) {
     isPlaying = true;
 }
 
-/* Play button */
+/* Play / Pause */
 playBtn.addEventListener("click", () => {
-    if (!audio.src) loadSong(0);
+
+    if (!audio.src) {
+        loadSong(0);
+        return;
+    }
 
     if (isPlaying) {
         audio.pause();
@@ -58,7 +64,7 @@ playBtn.addEventListener("click", () => {
     isPlaying = !isPlaying;
 });
 
-/* Progress bar */
+/* Progress */
 audio.addEventListener("timeupdate", () => {
     const { currentTime, duration } = audio;
     if (!duration) return;
@@ -79,7 +85,7 @@ function formatTime(time) {
     return minutes + ":" + seconds;
 }
 
-/* Auto next */
+/* Auto Next */
 audio.addEventListener("ended", () => {
     let next = (currentSong + 1) % songs.length;
     loadSong(next);

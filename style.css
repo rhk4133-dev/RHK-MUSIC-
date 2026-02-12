@@ -23,8 +23,8 @@ body {
 }
 
 .app {
-    width: 1000px;
-    height: 650px;
+    width: 1200px;
+    height: 750px;
     display: flex;
     border-radius: 40px;
     background: rgba(255,255,255,0.08);
@@ -78,8 +78,8 @@ body {
 }
 
 .cd {
-    width: 280px;
-    height: 280px;
+    width: 350px;
+    height: 350px;
     border-radius: 50%;
     background: radial-gradient(circle at center,
         #000 0%,
@@ -94,7 +94,7 @@ body {
 }
 
 .cd.playing {
-    animation: spin 4s linear infinite;
+    animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
@@ -103,14 +103,14 @@ body {
 }
 
 .controls button {
-    width: 80px;
-    height: 80px;
-    font-size: 30px;
-    border-radius: 50%;
+    width: 800px;
+    height: 800px;
+    font-size: 300px;
+    border-radius: 100%;
     border: none;
     background: linear-gradient(45deg, #ff0000, #ff7300);
     cursor: pointer;
-    margin-bottom: 20px;
+    margin-bottom: 200px;
 }
 
 .progress-container {

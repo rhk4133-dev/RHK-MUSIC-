@@ -1,31 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>RHK Premium Music</title>
+    <title>RHK Music</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1 class="logo">🎵 RHK PREMIUM MUSIC 🎵</h1>
+<!-- 🔥 HOME PAGE -->
+<div id="homePage" class="home">
+    <h1>🎵 RHK MUSIC 🎵</h1>
+    <button onclick="enterApp()">CLICK HERE TO LISTEN SONG</button>
+</div>
 
-<div class="music-container">
+<!-- 🔥 MUSIC APP -->
+<div id="musicApp" class="app" style="display:none;">
 
-    <img id="cover" src="img1.jpg" class="cover">
+    <button id="themeToggle" class="theme-btn">🌙</button>
 
-    <h2 id="title">Select Song</h2>
+    <input type="text" id="searchBar" placeholder="Search song..." onkeyup="searchSong()">
 
-    <audio id="audio"></audio>
-
-    <div class="progress-container" onclick="setProgress(event)">
-        <div class="progress" id="progress"></div>
+    <!-- NOW PLAYING -->
+    <div class="now-playing">
+        <img id="nowImg" src="">
+        <h3 id="nowTitle">No song playing</h3>
     </div>
 
-    <div class="controls">
-        <button onclick="prevSong()">⏮</button>
-        <button onclick="playPause()" id="playBtn">▶</button>
-        <button onclick="nextSong()">⏭</button>
+    <div class="columns">
+
+        <div class="column">
+            <h2>Kannada</h2>
+            <ul id="kannadaList"></ul>
+        </div>
+
+        <div class="column">
+            <h2>Hindi</h2>
+            <ul id="hindiList"></ul>
+        </div>
+
+        <div class="column">
+            <h2>Tamil</h2>
+            <ul id="tamilList"></ul>
+        </div>
+
+        <div class="column">
+            <h2>English</h2>
+            <ul id="englishList"></ul>
+        </div>
+
     </div>
+
+    <audio id="audio" controls></audio>
+
+    <input type="range" id="volume" min="0" max="1" step="0.1" value="1">
 
 </div>
 

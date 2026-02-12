@@ -5,10 +5,14 @@ const progressContainer = document.getElementById("progressContainer");
 const currentTimeEl = document.getElementById("current");
 const durationEl = document.getElementById("duration");
 const album = document.getElementById("album");
+const songs = document.querySelectorAll(".song");
+const title = document.getElementById("title");
 
 let isPlaying = false;
 
-playBtn.addEventListener("click", () => {
+playBtn.addEventListener("click", togglePlay);
+
+function togglePlay() {
     if (isPlaying) {
         audio.pause();
         playBtn.innerText = "▶";
@@ -19,6 +23,21 @@ playBtn.addEventListener("click", () => {
         album.classList.add("playing");
     }
     isPlaying = !isPlaying;
+}
+
+songs.forEach(song => {
+    song.addEventListener("click", () => {
+        document.querySelector(".song.active").classList.remove("active");
+        song.classList.add("active");
+
+        audio.src = song.dataset.src;
+        title.innerText = song.innerText;
+
+        audio.play();
+        isPlaying = true;
+        playBtn.innerText = "⏸";
+        album.classList.add("playing");
+    });
 });
 
 audio.addEventListener("timeupdate", () => {
@@ -34,9 +53,7 @@ audio.addEventListener("timeupdate", () => {
 progressContainer.addEventListener("click", (e) => {
     const width = progressContainer.clientWidth;
     const clickX = e.offsetX;
-    const duration = audio.duration;
-
-    audio.currentTime = (clickX / width) * duration;
+    audio.currentTime = (clickX / width) * audio.duration;
 });
 
 function formatTime(time) {

@@ -1,134 +1,86 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+const songs = [
+    { name: "Song 1", file: "song1.mp3" },
+    { name: "Song 2", file: "song2.mp3" },
+    { name: "Song 3", file: "song3.mp3" },
+    { name: "Song 4", file: "song4.mp3" },
+    { name: "Song 5", file: "song5.mp3" }
+];
+
+const audio = document.getElementById("audio");
+const playBtn = document.getElementById("playBtn");
+const progress = document.getElementById("progress");
+const progressContainer = document.getElementById("progressContainer");
+const currentTimeEl = document.getElementById("current");
+const durationEl = document.getElementById("duration");
+const playlist = document.getElementById("playlist");
+const title = document.getElementById("title");
+const cd = document.getElementById("cd");
+
+let currentSong = 0;
+let isPlaying = false;
+
+/* Create playlist */
+songs.forEach((song, index) => {
+    const li = document.createElement("li");
+    li.innerText = song.name;
+    li.addEventListener("click", () => loadSong(index));
+    playlist.appendChild(li);
+});
+
+function loadSong(index) {
+    currentSong = index;
+    audio.src = songs[index].file;
+    title.innerText = songs[index].name;
+
+    document.querySelectorAll("#playlist li").forEach(li => li.classList.remove("active"));
+    playlist.children[index].classList.add("active");
+
+    audio.play();
+    playBtn.innerText = "⏸";
+    cd.classList.add("playing");
+    isPlaying = true;
 }
 
-body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(-45deg, #141E30, #243B55, #1f4037, #99f2c8);
-    background-size: 400% 400%;
-    animation: bgMove 12s ease infinite;
-    color: white;
+/* Play button */
+playBtn.addEventListener("click", () => {
+    if (!audio.src) loadSong(0);
+
+    if (isPlaying) {
+        audio.pause();
+        playBtn.innerText = "▶";
+        cd.classList.remove("playing");
+    } else {
+        audio.play();
+        playBtn.innerText = "⏸";
+        cd.classList.add("playing");
+    }
+
+    isPlaying = !isPlaying;
+});
+
+/* Progress bar */
+audio.addEventListener("timeupdate", () => {
+    const { currentTime, duration } = audio;
+    if (!duration) return;
+
+    progress.style.width = (currentTime / duration) * 100 + "%";
+    currentTimeEl.innerText = formatTime(currentTime);
+    durationEl.innerText = formatTime(duration);
+});
+
+progressContainer.addEventListener("click", (e) => {
+    const width = progressContainer.clientWidth;
+    audio.currentTime = (e.offsetX / width) * audio.duration;
+});
+
+function formatTime(time) {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60).toString().padStart(2, "0");
+    return minutes + ":" + seconds;
 }
 
-@keyframes bgMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-.app {
-    width: 1000px;
-    height: 650px;
-    display: flex;
-    border-radius: 40px;
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 40px 80px rgba(0,0,0,0.7);
-    overflow: hidden;
-}
-
-.left {
-    flex: 2;
-    padding: 40px;
-    text-align: center;
-}
-
-.right {
-    flex: 1;
-    padding: 40px;
-    background: rgba(0,0,0,0.4);
-    overflow-y: auto;
-}
-
-.right h3 {
-    margin-bottom: 20px;
-}
-
-.right ul {
-    list-style: none;
-}
-
-.right li {
-    padding: 15px;
-    margin-bottom: 10px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 15px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.right li:hover {
-    background: rgba(255,255,255,0.3);
-}
-
-.right li.active {
-    background: linear-gradient(45deg, red, orange);
-}
-
-.cd-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
-}
-
-.cd {
-    width: 280px;
-    height: 280px;
-    border-radius: 50%;
-    background: radial-gradient(circle at center,
-        #000 0%,
-        #111 10%,
-        #8b0000 25%,
-        #ff0000 55%,
-        #b30000 75%,
-        #550000 100%);
-    box-shadow: 
-        0 30px 60px rgba(0,0,0,0.8),
-        inset 0 0 40px rgba(255,255,255,0.2);
-}
-
-.cd.playing {
-    animation: spin 4s linear infinite;
-}
-
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-.controls button {
-    width: 80px;
-    height: 80px;
-    font-size: 30px;
-    border-radius: 50%;
-    border: none;
-    background: linear-gradient(45deg, #ff0000, #ff7300);
-    cursor: pointer;
-    margin-bottom: 20px;
-}
-
-.progress-container {
-    height: 10px;
-    background: rgba(255,255,255,0.2);
-    border-radius: 20px;
-    cursor: pointer;
-    margin-bottom: 10px;
-}
-
-.progress {
-    height: 100%;
-    width: 0%;
-    background: red;
-    border-radius: 20px;
-}
-
-.time {
-    display: flex;
-    justify-content: space-between;
-}
+/* Auto next */
+audio.addEventListener("ended", () => {
+    let next = (currentSong + 1) % songs.length;
+    loadSong(next);
+});

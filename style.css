@@ -10,14 +10,13 @@ background:linear-gradient(135deg,#141E30,#243B55);
 color:white;
 }
 
-/* HOME PAGE */
+/* HOME */
 .home{
 height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-text-align:center;
 }
 
 .home h1{
@@ -35,7 +34,7 @@ color:white;
 cursor:pointer;
 }
 
-/* MUSIC PAGE */
+/* APP */
 .app{
 padding:20px;
 }
@@ -78,4 +77,17 @@ width:50px;
 height:50px;
 border-radius:5px;
 margin-right:10px;
+}
+
+/* PLAYER */
+.player{
+margin-top:30px;
+text-align:center;
+}
+
+.player img{
+width:200px;
+height:200px;
+border-radius:10px;
+margin-bottom:15px;
 }

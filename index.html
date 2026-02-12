@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RHK MUSIC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>RHK MUSIC</h1>
+    </header>
+
+    <div class="container">
+
+        <div class="song-card" onclick="playSong(0)">
+            <img src="https://picsum.photos/200?1">
+            <h3>Song 1</h3>
+        </div>
+
+        <div class="song-card" onclick="playSong(1)">
+            <img src="https://picsum.photos/200?2">
+            <h3>Song 2</h3>
+        </div>
+
+        <div class="song-card" onclick="playSong(2)">
+            <img src="https://picsum.photos/200?3">
+            <h3>Song 3</h3>
+        </div>
+
+        <div class="song-card" onclick="playSong(3)">
+            <img src="https://picsum.photos/200?4">
+            <h3>Song 4</h3>
+        </div>
+
+        <div class="song-card" onclick="playSong(4)">
+            <img src="https://picsum.photos/200?5">
+            <h3>Song 5</h3>
+        </div>
+
+    </div>
+
+    <div class="player">
+        <p id="nowPlaying">Select a song</p>
+        <button onclick="togglePlay()">Play / Pause</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -14,7 +14,6 @@ color:white;
 overflow-x:hidden;
 }
 
-/* Animated Background */
 @keyframes gradientMove{
 0%{background-position:0% 50%;}
 50%{background-position:100% 50%;}
@@ -168,6 +167,7 @@ display:none;
 justify-content:center;
 align-items:center;
 animation:fadeIn 0.5s ease;
+cursor:pointer;
 }
 
 .overlay{
@@ -210,8 +210,18 @@ font-size:14px;
 letter-spacing:3px;
 }
 
+.play-btn{
+margin-top:15px;
+padding:12px 25px;
+border:none;
+border-radius:25px;
+background:linear-gradient(45deg,#00c6ff,#0072ff);
+color:white;
+cursor:pointer;
+}
+
 .back-btn{
-margin-top:25px;
+margin-top:15px;
 padding:12px 25px;
 border:none;
 border-radius:25px;

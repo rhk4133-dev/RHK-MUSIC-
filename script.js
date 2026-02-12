@@ -1,78 +1,59 @@
 const songs = [
-    {name:"KAGADADA DONIYALLI", file:"song1.mp3", img:"img1.jpg"},
-    {name:"KANAVE KANAVE", file:"song2.mp3", img:"img2.jpg"},
-    {name:"ZARA ZARA", file:"song3.mp3", img:"img3.jpg"},
-    {name:"DIL LAGANA MANATHA", file:"song4.mp3", img:"img4.jpg"},
-    {name:"ENGLISH SONG", file:"song5.mp3", img:"img5.jpg"}
+{name:"KAGADADA DONIYALLI", file:"song1.mp3", img:"img1.jpg", lang:"kannada"},
+{name:"KANAVE KANAVE", file:"song2.mp3", img:"img2.jpg", lang:"kannada"},
+{name:"DIL LAGANA MANATHA", file:"song4.mp3", img:"img4.jpg", lang:"kannada"},
+{name:"ZARA ZARA", file:"song5.mp3", img:"img5.jpg", lang:"hindi"},
+{name:"TAMIL SONG", file:"song3.mp3", img:"img3.jpg", lang:"tamil"}
 ];
 
-let songIndex = 0;
+const audio=document.getElementById("audio");
+const kannadaList=document.getElementById("kannadaList");
+const hindiList=document.getElementById("hindiList");
+const tamilList=document.getElementById("tamilList");
+const englishList=document.getElementById("englishList");
 
-const audio = document.getElementById("audio");
-const cover = document.getElementById("cover");
-const title = document.getElementById("title");
-const progress = document.getElementById("progress");
-const playBtn = document.getElementById("playBtn");
-
-loadSong(songs[songIndex]);
-
-function loadSong(song){
-    title.innerText = song.name;
-    audio.src = song.file;
-    cover.src = song.img;
+/* Enter App */
+function enterApp(){
+document.getElementById("homePage").style.display="none";
+document.getElementById("musicApp").style.display="block";
 }
 
-function playPause(){
-    if(audio.paused){
-        audio.play();
-        cover.classList.add("play");
-        playBtn.innerText="⏸";
-    }else{
-        audio.pause();
-        cover.classList.remove("play");
-        playBtn.innerText="▶";
-    }
+/* Load Songs */
+songs.forEach(song=>{
+const li=document.createElement("li");
+li.innerHTML=`<img src="${song.img}"> ${song.name}`;
+li.onclick=()=>playSong(song.file,song.name,song.img);
+
+if(song.lang==="kannada") kannadaList.appendChild(li);
+if(song.lang==="hindi") hindiList.appendChild(li);
+if(song.lang==="tamil") tamilList.appendChild(li);
+});
+
+/* English Not Available */
+englishList.innerHTML="<li>Not Available</li>";
+
+function playSong(file,name,img){
+audio.src=file;
+audio.play();
+
+document.getElementById("nowTitle").innerText=name;
+document.getElementById("nowImg").src=img;
 }
 
-function nextSong(){
-    songIndex++;
-    if(songIndex > songs.length-1){
-        songIndex = 0;
-    }
-    loadSong(songs[songIndex]);
-    audio.play();
-    cover.classList.add("play");
-    playBtn.innerText="⏸";
+/* Search */
+function searchSong(){
+let input=document.getElementById("searchBar").value.toLowerCase();
+document.querySelectorAll("li").forEach(li=>{
+li.style.display=li.innerText.toLowerCase().includes(input)?"flex":"none";
+});
 }
 
-function prevSong(){
-    songIndex--;
-    if(songIndex < 0){
-        songIndex = songs.length-1;
-    }
-    loadSong(songs[songIndex]);
-    audio.play();
-    cover.classList.add("play");
-    playBtn.innerText="⏸";
-}
+/* Theme Toggle */
+document.getElementById("themeToggle").onclick=function(){
+document.body.classList.toggle("light-mode");
+};
 
-/* Auto Next */
-audio.addEventListener("ended", nextSong);
-
-/* Progress Bar Update */
-audio.addEventListener("timeupdate", updateProgress);
-
-function updateProgress(e){
-    const {duration, currentTime} = e.srcElement;
-    const percent = (currentTime / duration) * 100;
-    progress.style.width = percent + "%";
-}
-
-/* Click to change progress */
-function setProgress(e){
-    const width = this.clientWidth;
-    const clickX = e.offsetX;
-    const duration = audio.duration;
-
-    audio.currentTime = (clickX / width) * duration;
-}
+/* Volume */
+document.getElementById("volume").oninput=function(){
+audio.volume=this.value;
+};

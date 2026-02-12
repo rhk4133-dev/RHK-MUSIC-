@@ -1,9 +1,9 @@
 const songs = [
-    { name: "DIL LAGANA MANATHA", file: "song1.mp3" },
-    { name: "KAGADADA DONIYALLI", file: "song2.mp3" },
-    { name: "KANAVE KANAVE", file: "song3.mp3" },
-    { name: "KANTHARA THE PART 2", file: "song4.mp3" },
-    { name: "ZARA ZARA", file: "song5.mp3" }
+    { name: "DIL LAGANA MANATHA", file: "song1.mp3", img: "img1.jpg" },
+    { name: "KAGADADA DONIYALLI", file: "song2.mp3", img: "img2.jpg" },
+    { name: "KANAVE KANAVE", file: "song3.mp3", img: "img3.jpg" },
+    { name: "KANTHARA THE PART 2", file: "song4.mp3", img: "img4.jpg" },
+    { name: "ZARA ZARA", file: "song5.mp3", img: "img5.jpg" }
 ];
 
 const audio = document.getElementById("audio");
@@ -33,8 +33,14 @@ songs.forEach((song, index) => {
 
 function loadSong(index) {
     currentSong = index;
+
     audio.src = songs[index].file;
     title.innerText = songs[index].name;
+
+    /* 🔥 IMAGE ADDED HERE */
+    cassette.style.backgroundImage = `url('${songs[index].img}')`;
+    cassette.style.backgroundSize = "cover";
+    cassette.style.backgroundPosition = "center";
 
     document.querySelectorAll("li").forEach(li => li.classList.remove("active"));
     playlist.children[index].classList.add("active");
@@ -110,4 +116,3 @@ function formatTime(time) {
 audio.addEventListener("ended", () => {
     nextBtn.click();
 });
-

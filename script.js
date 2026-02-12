@@ -20,6 +20,7 @@ const audio = document.getElementById("audio");
 const songGrid = document.getElementById("songGrid");
 const playerView = document.getElementById("playerView");
 const cd = document.getElementById("cd");
+const soundWave = document.getElementById("soundWave");
 const nowTitle = document.getElementById("nowTitle");
 
 let currentIndex = 0;
@@ -46,6 +47,7 @@ function playSong(index){
 
     audio.src=song.file;
     audio.play();
+    soundWave.classList.remove("paused");
 
     nowTitle.innerText=song.name;
 
@@ -62,10 +64,12 @@ function togglePlay(){
     if(audio.paused){
         audio.play();
         cd.classList.add("playing");
+        soundWave.classList.remove("paused");
         document.getElementById("playBtn").innerText="⏸";
     }else{
         audio.pause();
         cd.classList.remove("playing");
+        soundWave.classList.add("paused");
         document.getElementById("playBtn").innerText="▶";
     }
 }
@@ -91,6 +95,7 @@ function minus10(){
 }
 
 function goBack(){
+    soundWave.classList.add("paused");
     playerView.style.display="none";
     audio.pause();
     cd.classList.remove("playing");

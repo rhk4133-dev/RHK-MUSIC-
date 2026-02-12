@@ -1,58 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>RHK Music</title>
+    <title>RHK Music Premium</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- 🔥 HOME PAGE -->
+<!-- HOME PAGE -->
 <div id="homePage" class="home">
-    <h1>🎵 RHK MUSIC 🎵</h1>
-    <button onclick="enterApp()">CLICK HERE TO LISTEN SONG</button>
+    <div class="hero-card">
+        <h1>🎵 RHK MUSIC</h1>
+        <p>Feel The Premium Sound</p>
+        <button onclick="enterApp()">ENTER MUSIC</button>
+    </div>
 </div>
 
-<!-- 🔥 MUSIC APP -->
+<!-- MUSIC APP -->
 <div id="musicApp" class="app" style="display:none;">
-
-    <button id="themeToggle" class="theme-btn">🌙</button>
 
     <input type="text" id="searchBar" placeholder="Search song..." onkeyup="searchSong()">
 
-    <!-- NOW PLAYING -->
-    <div class="now-playing">
-        <img id="nowImg" src="">
-        <h3 id="nowTitle">No song playing</h3>
+    <!-- SONG GRID -->
+    <div class="song-grid" id="songGrid"></div>
+
+    <!-- FULL PLAYER VIEW -->
+    <div id="playerView" class="player-view" style="display:none;">
+        <div class="overlay"></div>
+
+        <div class="center-player">
+            <div class="cd" id="cd"></div>
+            <h2 id="nowTitle"></h2>
+            <button onclick="goBack()" class="back-btn">⬅ Back</button>
+        </div>
     </div>
 
-    <div class="columns">
-
-        <div class="column">
-            <h2>Kannada</h2>
-            <ul id="kannadaList"></ul>
-        </div>
-
-        <div class="column">
-            <h2>Hindi</h2>
-            <ul id="hindiList"></ul>
-        </div>
-
-        <div class="column">
-            <h2>Tamil</h2>
-            <ul id="tamilList"></ul>
-        </div>
-
-        <div class="column">
-            <h2>English</h2>
-            <ul id="englishList"></ul>
-        </div>
-
-    </div>
-
-    <audio id="audio" controls></audio>
-
-    <input type="range" id="volume" min="0" max="1" step="0.1" value="1">
+    <audio id="audio"></audio>
 
 </div>
 

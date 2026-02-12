@@ -1,40 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>RHK Premium Music</title>
-    <link rel="stylesheet" href="style.css">
+  <title>RHK MUSIC</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="player">
+<h1 class="logo">RHK MUSIC</h1>
 
-    <!-- NOW PLAYING -->
-    <div class="now-playing">
-        <div class="album" id="album"></div>
-        <h2 id="title">Song 1</h2>
+<div class="container">
 
-        <div class="progress-container" id="progressContainer">
-            <div class="progress" id="progress"></div>
-        </div>
+  <!-- Song 1 -->
+  <div class="card">
+    <div class="disc"></div>
+    <h3>Song 1</h3>
+    <audio src="song1.mp3"></audio>
+    <button onclick="playSong(this)">▶</button>
+  </div>
 
-        <div class="time">
-            <span id="current">0:00</span>
-            <span id="duration">0:00</span>
-        </div>
+  <!-- Song 2 -->
+  <div class="card">
+    <div class="disc"></div>
+    <h3>Song 2</h3>
+    <audio src="song2.mp3"></audio>
+    <button onclick="playSong(this)">▶</button>
+  </div>
 
-        <button id="playBtn">▶</button>
-    </div>
+  <!-- Song 3 -->
+  <div class="card">
+    <div class="disc"></div>
+    <h3>Song 3</h3>
+    <audio src="song3.mp3"></audio>
+    <button onclick="playSong(this)">▶</button>
+  </div>
 
-    <!-- SCROLL SONG LIST -->
-    <div class="song-list" id="songList">
-        <div class="song active" data-src="song1.mp3">Song 1</div>
-        <div class="song" data-src="song2.mp3">Song 2</div>
-        <div class="song" data-src="song3.mp3">Song 3</div>
-        <div class="song" data-src="song4.mp3">Song 4</div>
-        <div class="song" data-src="song5.mp3">Song 5</div>
-    </div>
+  <!-- Song 4 -->
+  <div class="card">
+    <div class="disc"></div>
+    <h3>Song 4</h3>
+    <audio src="song4.mp3"></audio>
+    <button onclick="playSong(this)">▶</button>
+  </div>
 
-    <audio id="audio" src="song1.mp3"></audio>
+  <!-- Song 5 -->
+  <div class="card">
+    <div class="disc"></div>
+    <h3>Song 5</h3>
+    <audio src="song5.mp3"></audio>
+    <button onclick="playSong(this)">▶</button>
+  </div>
 
 </div>
 

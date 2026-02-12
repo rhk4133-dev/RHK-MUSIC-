@@ -2,22 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>RHK Music</title>
+    <title>RHK Premium Music</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="music-card">
-    <div class="cover"></div>
+<div class="player">
 
-    <h1>RHK Music</h1>
-    <h2>Song 1</h2>
-
-    <div class="controls">
-        <button id="playBtn">▶</button>
+    <div class="album-container">
+        <div class="album" id="album"></div>
     </div>
 
-    <div class="progress-container">
+    <h1 class="app-name">RHK Music</h1>
+    <p class="song-name">Song 1</p>
+
+    <div class="progress-container" id="progressContainer">
         <div class="progress" id="progress"></div>
     </div>
 
@@ -26,7 +25,10 @@
         <span id="duration">0:00</span>
     </div>
 
+    <button class="play-btn" id="playBtn">▶</button>
+
     <audio id="audio" src="song1.mp3"></audio>
+
 </div>
 
 <script src="script.js"></script>

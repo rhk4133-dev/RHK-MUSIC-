@@ -60,17 +60,16 @@ function playSong(index){
 
     document.getElementById("playBtn").innerText="⏸";
 }
-
 function togglePlay(){
     if(audio.paused){
         audio.play();
         cd.classList.add("playing");
-        soundWave.classList.remove("paused");
+        energyRing.classList.remove("paused");
         document.getElementById("playBtn").innerText="⏸";
     }else{
         audio.pause();
         cd.classList.remove("playing");
-        soundWave.classList.add("paused");
+        energyRing.classList.add("paused");
         document.getElementById("playBtn").innerText="▶";
     }
 }

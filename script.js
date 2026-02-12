@@ -1,7 +1,5 @@
 const songs = [
-    { name: "Song 1", file: "song1.mp3" },
-    { name: "Song 2", file: "song2.mp3" },
-    { name: "Song 3", file: "song3.mp3" }
+    { name: "Song 1", file: "song1.mp3" }
 ];
 
 const songList = document.getElementById("songList");

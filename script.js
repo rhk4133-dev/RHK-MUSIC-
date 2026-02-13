@@ -8,7 +8,7 @@ for (let i = 1; i <= 50; i++) {
     });
 }
 
-/* CHANGE FIRST SONG NAMES INTO KANNADA */
+/* Kannada Names */
 songs[0].name = "ದಿಲ್ ಲಗಾನಾ ಮನತಾ";
 songs[1].name = "ಕಾಗದದ ದೋಣಿಯಲ್ಲಿ";
 songs[2].name = "ಕನವೇ ಕನವೇ";
@@ -20,9 +20,11 @@ const audio = document.getElementById("audio");
 const songGrid = document.getElementById("songGrid");
 const playerView = document.getElementById("playerView");
 const cd = document.getElementById("cd");
-const energyRing = document.getElementById("energyRing");
-const soundWave = document.getElementById("soundWave");
 const nowTitle = document.getElementById("nowTitle");
+
+const prevTitle = document.getElementById("prevTitle");
+const currentTitle = document.getElementById("currentTitle");
+const nextTitle = document.getElementById("nextTitle");
 
 let currentIndex = 0;
 
@@ -42,13 +44,24 @@ songs.forEach((song,index)=>{
     songGrid.appendChild(card);
 });
 
+function updateSlideTitles(){
+    let prevIndex = currentIndex - 1;
+    let nextIndex = currentIndex + 1;
+
+    if(prevIndex < 0) prevIndex = songs.length - 1;
+    if(nextIndex >= songs.length) nextIndex = 0;
+
+    prevTitle.innerText = songs[prevIndex].name;
+    currentTitle.innerText = songs[currentIndex].name;
+    nextTitle.innerText = songs[nextIndex].name;
+}
+
 function playSong(index){
     currentIndex=index;
     const song=songs[index];
 
     audio.src=song.file;
     audio.play();
-    soundWave.classList.remove("paused");
 
     nowTitle.innerText=song.name;
 
@@ -59,17 +72,18 @@ function playSong(index){
     cd.classList.add("playing");
 
     document.getElementById("playBtn").innerText="⏸";
+
+    updateSlideTitles();
 }
+
 function togglePlay(){
     if(audio.paused){
         audio.play();
         cd.classList.add("playing");
-        energyRing.classList.remove("paused");
         document.getElementById("playBtn").innerText="⏸";
     }else{
         audio.pause();
         cd.classList.remove("playing");
-        energyRing.classList.add("paused");
         document.getElementById("playBtn").innerText="▶";
     }
 }
@@ -86,17 +100,10 @@ function prevSong(){
     playSong(currentIndex);
 }
 
-function plus10(){
-    audio.currentTime+=10;
-}
-
-function minus10(){
-    audio.currentTime-=10;
-}
+function plus10(){ audio.currentTime+=10; }
+function minus10(){ audio.currentTime-=10; }
 
 function goBack(){
-energyRing.classList.add("paused");
-    soundWave.classList.add("paused");
     playerView.style.display="none";
     audio.pause();
     cd.classList.remove("playing");
@@ -109,5 +116,4 @@ function searchSong(){
     });
 }
 
-/* Auto play next when song ends */
 audio.addEventListener("ended",nextSong);

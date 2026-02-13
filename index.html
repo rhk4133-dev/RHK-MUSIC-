@@ -27,11 +27,8 @@
 
 <!-- MUSIC APP -->
 <div id="musicApp" class="app" style="display:none;">
-
     <h2 class="app-title">🔥 RHK MUSIC PREMIUM 🔥</h2>
-
     <input type="text" id="searchBar" placeholder="Search RHK song..." onkeyup="searchSong()">
-
     <div class="song-grid" id="songGrid"></div>
 
     <!-- PLAYER -->
@@ -41,11 +38,13 @@
         <div class="center-player">
             <div class="cd" id="cd"></div>
             <h2 id="nowTitle"></h2>
-             
-             <div class="cd-container">
-    <div class="energy-ring" id="energyRing"></div>
-    <div class="cd" id="cd"></div>
-</div>
+
+            <!-- Slide Preview -->
+            <div class="slide-preview">
+                <div class="side-song" id="prevTitle"></div>
+                <div class="current-song" id="currentTitle"></div>
+                <div class="side-song" id="nextTitle"></div>
+            </div>
 
             <div class="player-controls">
                 <button onclick="prevSong()">⏮</button>
@@ -61,7 +60,6 @@
     </div>
 
     <audio id="audio"></audio>
-
 </div>
 
 <script src="script.js"></script>
